@@ -23,19 +23,23 @@
                     </div>
                     <div class="input__group">
                         <div class="login__form__container">
-                            <img class="login-form-user-icon" src="../assets/img/login-form-user-icon.svg" alt="Image of login form user icon">
+                            <img class="login-form-user-icon" src="../assets/img/login-form-user-icon.svg"
+                                 alt="Image of login form user icon">
                             <input type="text" v-model="email" placeholder="Email">
                         </div>
 
                         <div class="password__form__container">
-                            <img class="login-form-lock-icon" src="../assets/img/login-form-lock-icon.svg" alt="Image of login form lock icon">
+                            <img class="login-form-lock-icon" src="../assets/img/login-form-lock-icon.svg"
+                                 alt="Image of login form lock icon">
                             <input type="password" v-model="password" placeholder="Password">
-                            <img id="togglePassword" class="login-form-eye-icon" src="../assets/img/login-form-eye-icon.svg" alt="Image of login form eye icon">
+                            <img id="togglePassword" class="login-form-eye-icon"
+                                 src="../assets/img/login-form-eye-icon.svg" alt="Image of login form eye icon">
                         </div>
 
                         <div class="login-controls">
                             <button class="submit__btn" @click="submitAuth">Log in
-                                <img class="login-form-arrow-icon" src="../assets/img/login-form-arrow-icon.svg" alt="Image of login form arrow icon">
+                                <img class="login-form-arrow-icon" src="../assets/img/login-form-arrow-icon.svg"
+                                     alt="Image of login form arrow icon">
                             </button>
                             <button class="reset__password__btn">Забыли пароль?</button>
                         </div>
@@ -49,6 +53,11 @@
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+
+const store = useStore();  // Получаем доступ к Vuex store
+const router = useRouter(); // Получаем доступ к Vue Router
 
 const API_URL = "http://localhost:8080/api/auth";
 const email = ref("");
@@ -57,7 +66,6 @@ const password = ref("");
 const login = async (email, password) => {
     try {
         const response = await axios.post(`${API_URL}/login`, { email, password });
-        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error("Login error:", error.response?.data?.message || error.message);
@@ -71,17 +79,29 @@ const submitAuth = async () => {
         return;
     }
     try {
-        const response = await login(email.value, password.value);
+        const response = await login(email.value, password.value); // Ваш запрос к API
 
         console.log("Login successful:", response);
 
+        // Извлекаем данные пользователя и токен
+        const user = response; // Данные пользователя (response содержит все данные)
+        const token = response.token; // Токен
+
+        // Сохраняем данные в Vuex
+        store.commit("SET_AUTH", { isAuthenticated: true, user });
+        store.commit("SET_JWT_TOKEN", token);
+
+        // Логируем токен
+        console.log("Токен сохранен в Vuex и localStorage:", localStorage.getItem("JWT_TOKEN"));
+
         // Если логин успешен, редиректим на страницу home
-        this.$router.push({ name: 'home' });
+        await router.push({ name: "homePage" });
     } catch (error) {
         console.error("Login failed:", error);
     }
 };
 </script>
+
 
 <style>
 .wrapper {

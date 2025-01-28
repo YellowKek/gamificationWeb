@@ -2,11 +2,13 @@ import { createStore } from "vuex";
 
 // Проверяем сохраненное состояние авторизации
 const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+const JWT_TOKEN = localStorage.getItem("JWT_TOKEN");
 
 export default createStore({
     state: {
         isAuthenticated: isAuthenticated, // Состояние авторизации
         user: null, // Данные пользователя
+        JWT_TOKEN: localStorage.getItem("JWT_TOKEN"), // Токен из localStorage
     },
     mutations: {
         // Устанавливаем состояние авторизации и данные пользователя
@@ -15,25 +17,17 @@ export default createStore({
             state.user = payload.user;
             localStorage.setItem("isAuthenticated", payload.isAuthenticated.toString()); // Сохраняем в localStorage
         },
+        SET_JWT_TOKEN(state, token) {
+            state.JWT_TOKEN = token;
+            localStorage.setItem("JWT_TOKEN", token); // Сохраняем токен в localStorage
+        }
     },
     actions: {
-        async login({ commit }, credentials) {
-            try {
-                // Используем ваш существующий API запрос для авторизации
-                const response = await yourApiLoginFunction(credentials); // Замените на ваш реальный API запрос
-                const user = response.data; // Данные пользователя
-
-                // Если авторизация успешна, обновляем состояние
-                commit("SET_AUTH", { isAuthenticated: true, user });
-                return true;
-            } catch (error) {
-                console.error("Ошибка авторизации:", error);
-                return false;
-            }
-        },
+        // Мы не изменяем actions, так как запрос и получение токена происходит в другом месте
     },
     getters: {
         isAuthenticated: (state) => state.isAuthenticated, // Геттер для проверки авторизации
         user: (state) => state.user, // Геттер для получения данных пользователя
+        JWT_TOKEN: (state) => state.JWT_TOKEN, // Геттер для получения токена
     },
 });
