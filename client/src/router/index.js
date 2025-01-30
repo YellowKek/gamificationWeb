@@ -1,20 +1,24 @@
-import {createRouter, createWebHistory} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
+import store from "../store/store.js";
 
 const routes = [
     {
-        path: '/', redirect: '/home',
+        path: "/",
+        redirect: () => (store.state.isAuthenticated ? "/home" : "/auth"),
     },
     {
-        path: '/home',
-        name: 'homePage',
-        component: () => import('../views/HomePage.vue'),
+        path: "/home",
+        name: "homePage",
+        component: () => import("../views/HomePage.vue"),
+        meta: { requiresAuth: true },
     },
     {
-        path: '/auth',
-        name: 'authPage',
-        component: () => import('../views/AuthPage.vue'),
-    }
-]
+        path: "/auth",
+        name: "authPage",
+        component: () => import("../views/AuthPage.vue"),
+        meta: { guestOnly: true },
+    },
+];
 
 const router = createRouter({
     history: createWebHistory("/Gamification"),
@@ -24,11 +28,15 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     window.scrollTo({ top: 0, behavior: "instant" });
 
-    const nearestWithTitle = to.matched.find((route) => route.meta && route.meta.title);
+    const isAuthenticated = store.state.isAuthenticated;
 
-    document.title = nearestWithTitle ? nearestWithTitle.meta.title : "Gamification Web";
-
-    next();
+    if (to.meta.requiresAuth && !isAuthenticated) {
+        next("/auth");
+    } else if (to.meta.guestOnly && isAuthenticated) {
+        next("/home");
+    } else {
+        next();
+    }
 });
 
 export default router;
