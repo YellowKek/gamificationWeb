@@ -84,17 +84,13 @@ const submitAuth = async () => {
         console.log("Login successful:", response);
 
         // Извлекаем данные пользователя и токен
-        const user = response; // Данные пользователя (response содержит все данные)
-        const token = response.token; // Токен
+        const user = response;
+        const token = response.token;
 
         // Сохраняем данные в Vuex
         store.commit("SET_AUTH", { isAuthenticated: true, user });
         store.commit("SET_JWT_TOKEN", token);
 
-        // Логируем токен
-        console.log("Токен сохранен в Vuex и localStorage:", localStorage.getItem("JWT_TOKEN"));
-
-        // Если логин успешен, редиректим на страницу home
         await router.push({ name: "homePage" });
     } catch (error) {
         console.error("Login failed:", error);
