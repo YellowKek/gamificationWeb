@@ -1,11 +1,9 @@
 <template>
     <main class="wrapper">
         <div class="main__container">
-
-            <!--BRANDING CONTAINER-->
             <section class="branding__container">
                 <div class="logo__container">
-                    <img class="auth__page__logo" src="../assets/img/auth-page-logo.svg" alt="Logo image">
+                    <img class="auth__page__logo" src="../assets/img/auth-page-logo.svg" alt="Logo image" />
                 </div>
                 <div class="text__container">
                     <p class="text-slide-in school-text-tertiary">SCHOOL5A</p>
@@ -13,8 +11,6 @@
                     <p class="text-slide-in school-text">SCHOOL5A</p>
                 </div>
             </section>
-
-            <!--LOGIN CONTAINER-->
             <section class="login__container">
                 <div class="login__form">
                     <div class="login__text__content">
@@ -23,23 +19,27 @@
                     </div>
                     <div class="input__group">
                         <div class="login__form__container">
-                            <img class="login-form-user-icon" src="../assets/img/login-form-user-icon.svg"
-                                 alt="Image of login form user icon">
-                            <input type="text" v-model="email" placeholder="Email">
+                            <img class="login-form-user-icon" src="../assets/img/login-form-user-icon.svg" alt="Image of login form user icon" />
+                            <input type="text" v-model="email" placeholder="Email" />
                         </div>
-
                         <div class="password__form__container">
-                            <img class="login-form-lock-icon" src="../assets/img/login-form-lock-icon.svg"
-                                 alt="Image of login form lock icon">
-                            <input type="password" v-model="password" placeholder="Password">
-                            <img id="togglePassword" class="login-form-eye-icon"
-                                 src="../assets/img/login-form-eye-icon.svg" alt="Image of login form eye icon">
+                            <img class="login-form-lock-icon" src="../assets/img/login-form-lock-icon.svg" alt="Image of login form lock icon" />
+                            <input type="password" v-model="password" placeholder="Password" />
+                            <img
+                                id="togglePassword"
+                                class="login-form-eye-icon"
+                                src="../assets/img/login-form-eye-icon.svg"
+                                alt="Image of login form eye icon"
+                            />
                         </div>
-
                         <div class="login-controls">
-                            <button class="submit__btn" @click="submitAuth">Log in
-                                <img class="login-form-arrow-icon" src="../assets/img/login-form-arrow-icon.svg"
-                                     alt="Image of login form arrow icon">
+                            <button class="submit__btn" @click="submitAuth">
+                                Log in
+                                <img
+                                    class="login-form-arrow-icon"
+                                    src="../assets/img/login-form-arrow-icon.svg"
+                                    alt="Image of login form arrow icon"
+                                />
                             </button>
                             <button class="reset__password__btn">Забыли пароль?</button>
                         </div>
@@ -53,10 +53,10 @@
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
-import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
-const store = useStore();  // Получаем доступ к Vuex store
+const store = useStore(); // Получаем доступ к Vuex store
 const router = useRouter(); // Получаем доступ к Vue Router
 
 const API_URL = "http://localhost:8080/api/auth";
@@ -98,7 +98,6 @@ const submitAuth = async () => {
 };
 </script>
 
-
 <style>
 .wrapper {
     width: 100%;
@@ -118,7 +117,6 @@ const submitAuth = async () => {
     align-items: center;
 }
 
-/*BRANDING CONTAINER*/
 .branding__container {
     width: 560px;
     height: 572px;
@@ -131,7 +129,6 @@ const submitAuth = async () => {
 
 .logo__container {
     width: 100%;
-
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -149,17 +146,18 @@ const submitAuth = async () => {
 
 .text-slide-in {
     left: 0;
-    font-size: 200px;
-    font-weight: 700;
     user-select: none;
     -webkit-user-select: none;
+
+    font-size: 200px;
+    font-weight: 700;
 }
 
 .school-text {
     position: absolute;
     opacity: 0;
     animation: slideInFromLeft 1s ease forwards;
-    color: #0440E4;
+    color: #0440e4;
 }
 
 @keyframes slideInFromLeft {
@@ -188,18 +186,18 @@ const submitAuth = async () => {
     position: absolute;
     top: -111px;
     opacity: 0;
-    color: rgba(232.90, 238.82, 255, 0.60);
-    animation: slideInFromBottom1 1s ease forwards;
+    color: rgba(232.9, 238.82, 255, 0.6);
     animation-delay: 1s;
+    animation: slideInFromBottom1 1s ease forwards;
 }
 
 .school-text-tertiary {
     position: relative;
     top: -212px;
     opacity: 0;
-    color: rgba(232.90, 238.82, 255, 0.60);
-    animation: slideInFromBottom2 1s ease forwards;
+    color: rgba(232.9, 238.82, 255, 0.6);
     animation-delay: 1.1s;
+    animation: slideInFromBottom2 1s ease forwards;
 }
 
 @keyframes slideInFromBottom1 {
@@ -209,7 +207,7 @@ const submitAuth = async () => {
     }
     100% {
         transform: translateY(0);
-        opacity: 0.30;
+        opacity: 0.3;
     }
 }
 
@@ -220,7 +218,7 @@ const submitAuth = async () => {
     }
     100% {
         transform: translateY(0);
-        opacity: 0.30;
+        opacity: 0.3;
     }
 }
 
@@ -231,7 +229,7 @@ const submitAuth = async () => {
     }
     100% {
         transform: translateY(0);
-        opacity: 0.10;
+        opacity: 0.1;
     }
 }
 
@@ -242,11 +240,10 @@ const submitAuth = async () => {
     }
     100% {
         transform: translateY(0);
-        opacity: 0.10;
+        opacity: 0.1;
     }
 }
 
-/*LOGIN CONTAINER*/
 .login__container {
     height: 572px;
 }
@@ -264,7 +261,7 @@ const submitAuth = async () => {
     align-items: center;
     gap: 68px;
 
-    background-color: #0440E4;
+    background-color: #0440e4;
     border-radius: 35px;
 }
 
@@ -282,14 +279,14 @@ const submitAuth = async () => {
     font-size: 40px;
     font-weight: 700;
     color: #fff;
-    text-align: center
+    text-align: center;
 }
 
 .login__action__text {
     font-size: 20px;
     font-weight: 700;
     color: #fff;
-    text-align: center
+    text-align: center;
 }
 
 .input__group {
@@ -314,7 +311,7 @@ const submitAuth = async () => {
     justify-content: flex-start;
     align-items: center;
 
-    background-color: #FEF7F7;
+    background-color: #fef7f7;
     border-radius: 8.65px;
 }
 
@@ -336,7 +333,7 @@ const submitAuth = async () => {
 ::placeholder {
     font-size: 18px;
     font-weight: 700;
-    color: #5A5B67;
+    color: #5a5b67;
 }
 
 .login-form-eye-icon {
@@ -368,7 +365,7 @@ const submitAuth = async () => {
 
     font-size: 18px;
     font-weight: 700;
-    color: #5A5B67;
+    color: #5a5b67;
     cursor: pointer;
 }
 
