@@ -7,16 +7,22 @@ const routes = [
         redirect: () => (store.state.isAuthenticated ? "/home" : "/auth"),
     },
     {
+        path: "/auth",
+        name: "authPage",
+        component: () => import("../views/AuthPage.vue"),
+        meta: { guestOnly: true },
+    },
+    {
         path: "/home",
         name: "homePage",
         component: () => import("../views/HomePage.vue"),
         meta: { requiresAuth: true },
     },
     {
-        path: "/auth",
-        name: "authPage",
-        component: () => import("../views/AuthPage.vue"),
-        meta: { guestOnly: true },
+        path: "/profile",
+        name: "profilePage",
+        component: () => import("../views/ProfilePage.vue"),
+        meta: { requiresAuth: true },
     },
 ];
 
@@ -30,13 +36,15 @@ router.beforeEach((to, from, next) => {
 
     const isAuthenticated = store.state.isAuthenticated;
 
-    if (to.meta.requiresAuth && !isAuthenticated) {
-        next("/auth");
-    } else if (to.meta.guestOnly && isAuthenticated) {
-        next("/home");
-    } else {
-        next();
-    }
+    // if (to.meta.requiresAuth && !isAuthenticated) {
+    //     next("/auth");
+    // } else if (to.meta.guestOnly && isAuthenticated) {
+    //     next("/home");
+    // } else {
+    //     next();
+    // }
+
+    next(); // Разрешение перехода без проверки аутентификации
 });
 
 export default router;
