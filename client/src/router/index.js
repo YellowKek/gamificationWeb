@@ -4,22 +4,22 @@ import store from "../store/store.js";
 const routes = [
     {
         path: "/",
-        redirect: () => (store.state.isAuthenticated ? "/home" : "/auth"),
+        redirect: () => (store.state.isAuthenticated ? "/Home" : "/Auth"),
     },
     {
-        path: "/auth",
+        path: "/Auth",
         name: "authPage",
         component: () => import("../views/AuthPage.vue"),
-        meta: { guestOnly: true },
+        meta: { guestOnly: true, hideHeader: true },
     },
     {
-        path: "/home",
+        path: "/Home",
         name: "homePage",
         component: () => import("../views/HomePage.vue"),
         meta: { requiresAuth: true },
     },
     {
-        path: "/profile",
+        path: "/Profile",
         name: "profilePage",
         component: () => import("../views/ProfilePage.vue"),
         meta: { requiresAuth: true },
@@ -37,9 +37,9 @@ router.beforeEach((to, from, next) => {
     const isAuthenticated = store.state.isAuthenticated;
 
     // if (to.meta.requiresAuth && !isAuthenticated) {
-    //     next("/auth");
+    //     next("/Auth");
     // } else if (to.meta.guestOnly && isAuthenticated) {
-    //     next("/home");
+    //     next("/Home");
     // } else {
     //     next();
     // }
