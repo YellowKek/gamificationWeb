@@ -8,7 +8,7 @@
                 <button class="header_square_btn">
                     <img class="header_btn_icon" :src="notificationIcon" alt="notification icon" />
                 </button>
-                <router-link to="/Home" class="header_square_btn">
+                <router-link to="/Profile" class="header_square_btn">
                     <img class="header_btn_icon" :src="profileIcon" alt="profile icon" />
                 </router-link>
             </div>
