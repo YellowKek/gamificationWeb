@@ -14,10 +14,11 @@ import UserInfo from "../components/profileComponents/UserInfo.vue";
 .profile_page_container {
     width: 100vw;
     height: 100vh;
-    padding: 0px 120px 0px 185px;
+    padding: 0 120px 0 185px;
 
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    background-color: #1D2733;
 }
 </style>

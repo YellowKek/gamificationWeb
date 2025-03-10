@@ -19,12 +19,12 @@ body {
     padding: 51px 0px;
     overflow-x: hidden;
     overflow-y: scroll;
-    background: #020418;
+    background: #1D2733;
 
     font-family: "Gilroy", sans-serif;
     font-weight: 400;
     font-style: normal;
     line-height: normal;
-    color: #000000;
+    color: #A5BCF9;
 }
 </style>
