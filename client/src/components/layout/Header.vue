@@ -26,7 +26,7 @@ const header_link = [
         label: "Календарь",
     },
     {
-        to: "/Home",
+        to: "/Clan",
         label: "Кланы",
     },
     {

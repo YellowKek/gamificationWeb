@@ -13,9 +13,9 @@ const routes = [
         meta: { guestOnly: true, hideHeader: true },
     },
     {
-        path: "/Home",
+        path: "/Clan",
         name: "homePage",
-        component: () => import("../views/HomePage.vue"),
+        component: () => import("../views/ClanPage.vue"),
         meta: { requiresAuth: true },
     },
     {

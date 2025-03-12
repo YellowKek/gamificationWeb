@@ -5,22 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d2f1551-60ec-40cb-8633-7c2177586f79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/svg/clan-icons/Air2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/svg/clan-icons/Fire2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/svg/clan-icons/Ground2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/svg/clan-icons/Water2.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/svg/profile-icon/arrow.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/svg/profile-icon/book.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/svg/profile-icon/microphone.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/styles/profile_clan.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/styles/profile_user_info.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/assets/img/svg/profile-icon/cup.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/styles/tribe_tournament.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/views/ClanPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/assets/img/svg/prodile-icon/mail-icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/img/svg/profile-icon/mail-icon.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/assets/img/svg/prodile-icon/user-icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/img/svg/profile-icon/user-icon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/layout/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/Header.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/profileComponents/UserInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/profileComponents/UserInfo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/ProfilePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/ProfilePage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styles/profile_clan.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/styles/profile_user_info.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/HomePage.vue" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +26,8 @@
       <list>
         <option value="TypeScript File" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="Vue Composition API Component" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -49,27 +43,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/damir/WebstormProjects/gamificationWeb/client/src/assets/img",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/damir/WebstormProjects/gamificationWeb/client/src/assets/img&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.3.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\damir\WebstormProjects\gamificationWeb\client\src\assets\img" />
@@ -97,7 +91,9 @@
       <workItem from="1738088073314" duration="10986000" />
       <workItem from="1738247445481" duration="6271000" />
       <workItem from="1738517178318" duration="423000" />
-      <workItem from="1741611782528" duration="15755000" />
+      <workItem from="1741611782528" duration="16396000" />
+      <workItem from="1741689596600" duration="6111000" />
+      <workItem from="1741774793372" duration="8627000" />
     </task>
     <servers />
   </component>
