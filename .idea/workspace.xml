@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d2f1551-60ec-40cb-8633-7c2177586f79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/assets/img/svg/profile-icon/cup.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/styles/tribe_tournament.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/views/ClanPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/views/HomePage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/layout/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/profileComponents/UserInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/profileComponents/UserInfo.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/styles/profile_clan.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/styles/profile_user_info.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/HomePage.vue" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +19,8 @@
       <list>
         <option value="TypeScript File" />
         <option value="JavaScript File" />
-        <option value="Vue Composition API Component" />
         <option value="CSS File" />
+        <option value="Vue Composition API Component" />
       </list>
     </option>
   </component>
@@ -93,7 +86,7 @@
       <workItem from="1738517178318" duration="423000" />
       <workItem from="1741611782528" duration="16396000" />
       <workItem from="1741689596600" duration="6111000" />
-      <workItem from="1741774793372" duration="8627000" />
+      <workItem from="1741774793372" duration="10206000" />
     </task>
     <servers />
   </component>

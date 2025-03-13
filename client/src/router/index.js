@@ -14,7 +14,7 @@ const routes = [
     },
     {
         path: "/Clan",
-        name: "homePage",
+        name: "clanPage",
         component: () => import("../views/ClanPage.vue"),
         meta: { requiresAuth: true },
     },
@@ -24,6 +24,12 @@ const routes = [
         component: () => import("../views/ProfilePage.vue"),
         meta: { requiresAuth: true },
     },
+    {
+        path: "/Home",
+        name: "homePage",
+        component: () => import("../views/HomePage.vue"),
+        meta: { requiresAuth: true },
+    }
 ];
 
 const router = createRouter({
