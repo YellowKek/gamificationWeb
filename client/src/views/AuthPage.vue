@@ -256,16 +256,16 @@ const submitAuth = async () => {
 
 .login__form {
     position: relative;
-    max-height: 572px;
+    max-width: 400px; /* Ограничиваем максимальную ширину */
     box-sizing: border-box;
-    padding: 102px 49px;
+    padding: 60px 40px; /* Немного уменьшил отступы */
     z-index: 9999;
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    gap: 68px;
+    gap: 50px; /* Немного уменьшил расстояние между блоками */
 
     background-color: #0440e4;
     border-radius: 35px;
@@ -297,28 +297,34 @@ const submitAuth = async () => {
 
 .input__group {
     width: 100%;
-
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 18px;
+    gap: 15px; /* Уменьшаем расстояние между полями */
 }
 
 .login__form__container,
 .password__form__container {
     width: 100%;
-    height: 60px;
-
+    height: 50px; /* Немного уменьшил высоту */
     box-sizing: border-box;
-    padding: 14px 22px;
-
+    padding: 10px 15px; /* Уменьшил отступы внутри */
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-
     background-color: #fef7f7;
-    border-radius: 8.65px;
+    border-radius: 8px;
+}
+
+.login__form__container input,
+.password__form__container input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    background: transparent;
+    box-sizing: border-box;
+    padding: 5px; /* Добавил немного внутреннего отступа */
 }
 
 .login-form-user-icon,
@@ -326,15 +332,6 @@ const submitAuth = async () => {
     margin-right: 15px;
 }
 
-#login,
-#password {
-    width: 100%;
-    height: 100%;
-
-    font-size: 18px;
-    font-weight: 700;
-    color: #000;
-}
 
 ::placeholder {
     font-size: 18px;

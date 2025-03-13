@@ -16,7 +16,7 @@ body {
     width: 100vw;
     height: 100vh;
     min-width: 320px;
-    padding: 51px 0px;
+    padding: 51px 0;
     overflow-x: hidden;
     overflow-y: scroll;
     background: #1D2733;

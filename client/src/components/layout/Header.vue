@@ -11,6 +11,10 @@
                 <router-link to="/Profile" class="header_square_btn">
                     <img class="header_btn_icon" :src="profileIcon" alt="profile icon" />
                 </router-link>
+
+                <router-link to="/Admin" >
+                    <button class="admin_panel_button" @click="goToAdminPanel">Админ-панель</button>
+                </router-link>
             </div>
         </nav>
     </header>
@@ -19,6 +23,9 @@
 <script setup>
 import notificationIcon from "../../assets/img/svg/header-icon/notification-icon.svg";
 import profileIcon from "../../assets/img/svg/header-icon/profile-icon.svg";
+import router from "../../router/index.js";
+
+const goToAdminPanel = () => { router.push('/admin'); };
 
 const header_link = [
     {
@@ -37,6 +44,17 @@ const header_link = [
 </script>
 
 <style>
+.admin_panel_button {
+    background-color: #D9534F;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
 .header_container {
     width: 100%;
     display: flex;

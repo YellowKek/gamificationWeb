@@ -29,6 +29,12 @@ const routes = [
         name: "homePage",
         component: () => import("../views/HomePage.vue"),
         meta: { requiresAuth: true },
+    },
+    {
+        path: "/Admin",
+        name: "adminPage",
+        component: () => import("../views/AdminPage.vue"),
+        meta: { requiresAuth: true },
     }
 ];
 
@@ -42,13 +48,13 @@ router.beforeEach((to, from, next) => {
 
     const isAuthenticated = store.state.isAuthenticated;
 
-    // if (to.meta.requiresAuth && !isAuthenticated) {
-    //     next("/Auth");
-    // } else if (to.meta.guestOnly && isAuthenticated) {
-    //     next("/Home");
-    // } else {
-    //     next();
-    // }
+    if (to.meta.requiresAuth && !isAuthenticated) {
+        next("/Auth");
+    } else if (to.meta.guestOnly && isAuthenticated) {
+        next("/Home");
+    } else {
+        next();
+    }
 
     next(); // Разрешение перехода без проверки аутентификации
 });
