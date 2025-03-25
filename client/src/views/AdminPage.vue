@@ -27,6 +27,10 @@
         <div class="clan_form">
             <h2 style="color: #E0E0E0">Создать клан</h2>
             <input v-model="newClan.name" placeholder="Название клана" class="input_field" />
+            <label for="file-upload" class="input_label">
+                Загрузите файл в формате SVG
+            </label>
+            <input type="file" @change="handleImageUpload" class="input_field" accept=".svg" />
             <button class="save_clan_button" @click="addClan">Создать клан</button>
         </div>
 
@@ -49,16 +53,66 @@
 <script setup>
 import { ref } from "vue";
 import CreateEvent from "../components/event/CreateEvent.vue";
+import { useStore } from "vuex";
 
 const users = ref([]);
 const clans = ref([]);  // Список кланов
 const newUser = ref({ name: "", surname: "", patronymic: "", email: "", isAdmin: false });
-const newClan = ref({ name: "" });  // Новый клан с полем name
-
+const store = useStore()
 const apiUrl = "http://localhost:8080/api";  // Укажите ваш серверный API URL
 
 // Получаем JWT токен из localStorage
 const getToken = () => localStorage.getItem('JWT_TOKEN');
+
+// Добавим новое свойство для хранения изображения
+const newClan = ref({ name: "", image: null });  // Новый клан с полем name и image
+
+// Функция для обработки загрузки изображения и конвертации в Base64
+const handleImageUpload = async (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            newClan.value.image = reader.result.split(',')[1];  // Сохраняем только часть Base64 (без префикса data:image...)
+        };
+        reader.readAsDataURL(file);  // Читаем файл как Data URL
+    }
+};
+
+// Модификация функции для добавления клана, чтобы отправить изображение
+const addClan = async () => {
+    if (newClan.value.name) {
+        try {
+            const clanData = {
+                name: newClan.value.name,
+                image: newClan.value.image  // Если изображение есть, отправляем его в формате Base64
+            };
+
+            const response = await fetch(`${apiUrl}/clan`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getToken()}`,
+                },
+                body: JSON.stringify(clanData),  // Отправляем данные как JSON
+            });
+
+            if (response.ok) {
+                // Очистка формы после успешного добавления
+                newClan.value = { name: "", image: null };
+
+                // Отправка запроса на получение всех кланов после добавления
+                await fetchClans();
+            } else {
+                alert(response.message);
+                console.error("Ошибка при добавлении клана");
+            }
+        } catch (error) {
+            alert(error.message);
+            console.error("Ошибка при отправке запроса", error);
+        }
+    }
+};
 
 // Функция для отправки данных на сервер и добавления пользователя
 const addUser = async () => {
@@ -74,14 +128,18 @@ const addUser = async () => {
                 body: JSON.stringify(newUser.value),
             });
 
-            if (response.ok) {
+            if (response.status === 200) {
                 // Очистка формы после успешного добавления
                 newUser.value = { name: "", surname: "", patronymic: "", email: "", isAdmin: false };
 
                 // Отправка запроса на получение всех пользователей после добавления
                 await fetchUsers();
             } else {
-                alert(response.message);
+                if (response.status === 403) {
+                    localStorage.setItem("JWT_TOKEN", null);
+                    store.commit("SET_AUTH", false);
+                }
+                alert(response.status + " " + response.body);
                 console.error("Ошибка при добавлении пользователя");
             }
         } catch (error) {
@@ -90,38 +148,6 @@ const addUser = async () => {
         }
     }
 };
-
-// Функция для отправки данных на сервер и добавления клана
-const addClan = async () => {
-    if (newClan.value.name) {
-        try {
-            // Отправка запроса на создание клана
-            const response = await fetch(`${apiUrl}/clan`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${getToken()}`, // Добавляем JWT токен в заголовки
-                },
-                body: JSON.stringify({ name: newClan.value.name }), // Отправляем объект с полем name
-            });
-
-            if (response.ok) {
-                // Очистка формы после успешного добавления
-                newClan.value = { name: "" };
-
-                // Отправка запроса на получение всех кланов после добавления
-                await fetchClans();
-            } else {
-                alert(response.message);
-                console.error("Ошибка при добавлении клана");
-            }
-        } catch (error) {
-            alert(error.message);
-            console.error("Ошибка при отправке запроса", error);
-        }
-    }
-};
-
 
 
 // Функция для получения списка всех пользователей
@@ -133,8 +159,7 @@ const fetchUsers = async () => {
             },
         });
         if (response.ok) {
-            const data = await response.json();
-            users.value = data; // Обновляем список пользователей
+            users.value = await response.json(); // Обновляем список пользователей
         } else {
             alert(response.message);
             console.error("Ошибка при получении списка пользователей");
@@ -148,14 +173,13 @@ const fetchUsers = async () => {
 // Функция для получения списка всех кланов
 const fetchClans = async () => {
     try {
-        const response = await fetch(`${apiUrl}/clan`, {
+        const response = await fetch(`${apiUrl}/clan/withMembers`, {
             headers: {
                 "Authorization": `Bearer ${getToken()}`, // Добавляем JWT токен в заголовки
             },
         });
         if (response.ok) {
-            const data = await response.json();
-            clans.value = data; // Обновляем список кланов
+            clans.value = await response.json(); // Обновляем список кланов
         } else {
             alert(response.message);
             console.error("Ошибка при получении списка кланов");
@@ -168,7 +192,7 @@ const fetchClans = async () => {
 
 // Функция для назначения пользователя администратором
 const makeAdmin = (user) => {
-    user.isAdmin = true;
+    // user.isAdmin = true;
 };
 
 // Получение списка пользователей и кланов при монтировании компонента
@@ -185,6 +209,17 @@ fetchClans();
     padding: 10px;
     box-sizing: border-box;
 }
+
+.input_label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 .clan_card {
     background-color: #3b4a63;

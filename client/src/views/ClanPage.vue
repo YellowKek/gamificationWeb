@@ -1,90 +1,26 @@
 <template>
     <div class="clan_tournament_container">
         <p class="clan_tournament_label">Tribe Tournament</p>
-        <div class="clan_tournament_position">
-            <div class="vertical_divider earth"></div>
-            <img class="clan_icon" :src="earth_icon" alt="clan icon">
-            <div class="clan_info_home">
-                <div class="info">
-                    <p class="clan_label">Земля</p>
-                    <p class="clan_members">330 участников</p>
-                </div>
-                <div class="clan_points_container">
-                    <img class="cup_icon" :src="cup" alt="cup icon">
-                    <p class="clan_points">21,436 tribe points</p>
-                </div>
-            </div>
-            <div class="best_member_container">
-                <img class="best_member_icon" :src="user_icon" alt="user icon">
-                <div class="best_member_data">
-                    <p class="best_member_name">Иванов Иван</p>
-                    <p class="best_member_email">ivanivanov@mail.com</p>
-                </div>
-            </div>
-        </div>
 
-        <div class="clan_tournament_position">
-            <div class="vertical_divider water"></div>
-            <img class="clan_icon" :src="water_icon" alt="clan icon">
+        <div v-for="(clan, index) in sortedClans" :key="index" class="clan_tournament_position">
+            <div :class="['vertical_divider']"></div>
+            <img :class="['clan_icon']" :src="clan.image ? 'data:image/svg+xml;base64,' + clan.image : ''"
+                 alt="clan icon">
             <div class="clan_info_home">
                 <div class="info">
-                    <p class="clan_label">Вода</p>
-                    <p class="clan_members">330 участников</p>
+                    <p class="clan_label">{{ clan.name }}</p>
+                    <p class="clan_members">{{ clan.members_count }} участников</p>
                 </div>
                 <div class="clan_points_container">
                     <img class="cup_icon" :src="cup" alt="cup icon">
-                    <p class="clan_points">20,436 tribe points</p>
+                    <p class="clan_points">{{ clan.points_amount }} tribe points</p>
                 </div>
             </div>
             <div class="best_member_container">
                 <img class="best_member_icon" :src="user_icon" alt="user icon">
                 <div class="best_member_data">
-                    <p class="best_member_name">Иванов Иван</p>
-                    <p class="best_member_email">ivanivanov@mail.com</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="clan_tournament_position">
-            <div class="vertical_divider fire"></div>
-            <img class="clan_icon" :src="fire_icon" alt="clan icon">
-            <div class="clan_info_home">
-                <div class="info">
-                    <p class="clan_label">Огонь</p>
-                    <p class="clan_members">330 участников</p>
-                </div>
-                <div class="clan_points_container">
-                    <img class="cup_icon" :src="cup" alt="cup icon">
-                    <p class="clan_points">19,436 tribe points</p>
-                </div>
-            </div>
-            <div class="best_member_container">
-                <img class="best_member_icon" :src="user_icon" alt="user icon">
-                <div class="best_member_data">
-                    <p class="best_member_name">Иванов Иван</p>
-                    <p class="best_member_email">ivanivanov@mail.com</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="clan_tournament_position">
-            <div class="vertical_divider air"></div>
-            <img class="clan_icon" :src="air_icon" alt="clan icon">
-            <div class="clan_info_home">
-                <div class="info">
-                    <p class="clan_label">Воздух</p>
-                    <p class="clan_members">330 участников</p>
-                </div>
-                <div class="clan_points_container">
-                    <img class="cup_icon" :src="cup" alt="cup icon">
-                    <p class="clan_points">18,436 tribe points</p>
-                </div>
-            </div>
-            <div class="best_member_container">
-                <img class="best_member_icon" :src="user_icon" alt="user icon">
-                <div class="best_member_data">
-                    <p class="best_member_name">Иванов Иван</p>
-                    <p class="best_member_email">ivanivanov@mail.com</p>
+                    <p class="best_member_name">{{ clan.best_member_name }}</p>
+                    <p class="best_member_email">{{ clan.best_member_email }}</p>
                 </div>
             </div>
         </div>
@@ -93,17 +29,17 @@
             <div class="clan_card1">
                 <div class="clan_card_divider air"></div>
                 <div class="circle">
-                    <img class="clan_card_logo" :src="air_icon" alt="clan icon">
+                    <img :class="['clan_card_logo']" :src="clanInfo.image ? 'data:image/svg+xml;base64,' + clanInfo.image : ''" alt="clan icon">
                 </div>
                 <div class="clan_info">
                     <div class="clan_card1_container">
                         <div class="balance">
-                            <span class="points">2000</span>
+                            <span class="points">{{ userInfo.coins }}</span>
                             <span class="label">ЕВРОДОЛЛАРОВ</span>
                         </div>
                         <div>
                             <div style="display: flex; flex-direction: row">
-                                <p style="font-size: 32px; color: #E9EAEA">Клан воздуха 4</p>
+                                <p style="font-size: 32px; color: #E9EAEA">Клан {{ clanInfo.name }} {{ clanInfo.place }}</p>
                                 <div style="display: flex;
                                         flex-direction: column;
                                         align-items: center;
@@ -114,12 +50,12 @@
                                     <img class="arrow_home" :src="arrow" alt="arrow icon">
                                 </div>
                             </div>
-                            <p style="color: #E9EAEA; font-size: 18px">330 участников</p>
+                            <p style="color: #E9EAEA; font-size: 18px">{{ clanInfo.members_count }} участников</p>
                         </div>
                         <div class="tribe_points">
                             <div style="display: flex; flex-direction: row; align-items: center; gap: 10px;">
                                 <img class="cup_icon_clan" :src="cup" alt="cup icon">
-                                <p style="font-size: 64px; color: #E9EAEA">18,436</p>
+                                <p style="font-size: 64px; color: #E9EAEA">{{ clanInfo.points_amount }}</p>
                             </div>
                             <p style="font-size: 32px; color: #E9EAEA">TRIBE POINTS</p>
                         </div>
@@ -132,16 +68,16 @@
                         <img style="width: 47px; height: 60px" :src="user_icon" alt="user icon">
                     </div>
                     <div class="user_text">
-                        <div class="user_name">Иван Иванов</div>
-                        <div class="user_email">ivanivanov@mail.ru</div>
+                        <div class="user_name">{{ userInfo.name }} {{ userInfo.surname }}</div>
+                        <div class="user_email">{{ userInfo.email }}</div>
                     </div>
                 </div>
                 <div class="user_tribe_points">
                     <img class="cup_icon" :src="cup" alt="cup icon">
-                    <span>2,436</span> TRIBE POINTS
+                    <span>{{ userInfo.clan_points }}</span> TRIBE POINTS
                 </div>
                 <div class="user_rank">
-                    <span class="rank_number">121</span>
+                    <span class="rank_number">{{ userInfo.place }}</span>
                     <span class="rank_label">Рейтинг</span>
                 </div>
             </div>
@@ -151,13 +87,85 @@
 </template>
 
 <script setup>
-import earth_icon from "../assets/img/svg/clan-icons/Ground2.svg";
-import water_icon from "../assets/img/svg/clan-icons/Water2.svg";
-import air_icon from "../assets/img/svg/clan-icons/Air2.svg";
-import fire_icon from "../assets/img/svg/clan-icons/Fire2.svg";
 import cup from "../assets/img/svg/profile-icon/cup.svg";
 import user_icon from "../assets/img/svg/profile-icon/user-icon.svg";
 import arrow from "../assets/img/svg/profile-icon/arrow.svg";
+
+import { ref, computed } from "vue";
+
+const clans = ref([]); // Сюда будут записываться кланы
+const userInfo = ref([]);
+const clanInfo = ref([]);
+
+const apiUrl = "http://localhost:8080/api";
+
+const getToken = () => localStorage.getItem("JWT_TOKEN");
+
+const fetchClans = async () => {
+    try {
+        const response = await fetch(`${apiUrl}/clan/tournament`, {
+            headers: {
+                "Authorization": `Bearer ${getToken()}`, // Добавляем JWT токен в заголовки
+            },
+        });
+        if (response.status === 200) {
+            clans.value = await response.json(); // Обновляем список кланов
+        } else {
+            alert(response.status + " " + response.body);
+            console.error("Ошибка при получении списка кланов");
+        }
+    } catch (error) {
+        alert(error.message);
+        console.error("Ошибка при отправке запроса", error);
+    }
+};
+
+const fetchUserInfo = async () => {
+    try {
+        const response = await fetch(`${apiUrl}/users/${localStorage.getItem("userId")}`, {
+            headers: {
+                "Authorization": `Bearer ${getToken()}`,
+            },
+        });
+        if (response.status === 200) {
+            userInfo.value = await response.json();
+        } else {
+            alert(response.status + " " + response.body);
+        }
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+const fetchUsersClan = async () => {
+    try {
+        await fetchUserInfo();
+        const clanName = encodeURIComponent(userInfo.value.clan);
+        const response = await fetch(`${apiUrl}/clan/${clanName}`, {
+            headers: {
+                "Authorization": `Bearer ${getToken()}`,
+            },
+            method: "GET",
+        });
+        if (response.status === 200) {
+            clanInfo.value = await response.json();
+        } else {
+            alert(response.status + " " + response.body);
+        }
+    } catch (error) {
+        alert(error);
+    }
+};
+
+fetchClans();
+fetchUserInfo();
+fetchUsersClan();
+
+
+// Функция для сортировки кланов по очкам
+const sortedClans = computed(() => {
+    return clans.value.sort((a, b) => b.points_amount - a.points_amount);
+});
 </script>
 
 <style>
@@ -280,6 +288,7 @@ import arrow from "../assets/img/svg/profile-icon/arrow.svg";
     margin-right: 20px; /* Отступ справа от полоски */
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    background-color: #76C578;
 }
 
 .earth {

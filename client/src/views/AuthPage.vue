@@ -91,11 +91,15 @@ const submitAuth = async () => {
 
         console.log("Login successful:", response);
 
-        const user = response;
+        const userId = response.id;
+        const userEmail = response.email;
         const token = response.token;
 
-        store.commit("SET_AUTH", { isAuthenticated: true, user });
+        store.commit("SET_AUTH", { isAuthenticated: true});
+
         store.commit("SET_JWT_TOKEN", token);
+        store.commit("SET_USER_ID", userId);
+        store.commit("SET_USER_EMAIL", userEmail);
 
         await router.push({ name: "homePage" });
     } catch (error) {

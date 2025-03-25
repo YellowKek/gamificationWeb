@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d2f1551-60ec-40cb-8633-7c2177586f79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/event/CreateEvent.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/views/AdminPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/layout/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/layout/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/HomePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/HomePage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/profileComponents/UserInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/profileComponents/UserInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/AdminPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/AdminPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/AuthPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/AuthPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/ClanPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/ClanPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/ProfilePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/ProfilePage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +48,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;22.13.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;22.13.10&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/damir/WebstormProjects/gamificationWeb/client/src/assets/img&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -91,7 +95,14 @@
       <workItem from="1738517178318" duration="423000" />
       <workItem from="1741611782528" duration="16396000" />
       <workItem from="1741689596600" duration="6111000" />
-      <workItem from="1741774793372" duration="19215000" />
+      <workItem from="1741774793372" duration="20422000" />
+      <workItem from="1742024176487" duration="528000" />
+      <workItem from="1742025914713" duration="11056000" />
+      <workItem from="1742151030778" duration="606000" />
+      <workItem from="1742212692309" duration="4272000" />
+      <workItem from="1742316534494" duration="2071000" />
+      <workItem from="1742467175446" duration="8038000" />
+      <workItem from="1742905871312" duration="9300000" />
     </task>
     <servers />
   </component>
